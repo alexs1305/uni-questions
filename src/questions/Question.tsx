@@ -1,10 +1,14 @@
 import * as React from "react";
 import { useState } from "react";
 
-interface Props {
+export interface QuestionType {
   question: string;
   answers: string[];
   correctAnswers: number[];
+}
+
+interface Props {
+  question: QuestionType;
   shouldRevealAnswer: boolean;
 }
 
@@ -28,34 +32,36 @@ function check(
 
 export const Question: React.SFC<Props> = ({
   question,
-  answers,
-  correctAnswers,
   shouldRevealAnswer
 }) => {
   const [checkedAnswers, setCheckedAnswers] = useState([]);
 
   return (
     <div>
-      <h3>{question}</h3>
-      {answers.map((q, i) => {
-        let state = check(i, checkedAnswers, correctAnswers);
+      <h3>{question.question}</h3>
+      {question.answers.map((q, i) => {
+        let state = check(i, checkedAnswers, question.correctAnswers);
         return (
           <li key={i} style={{ display: "inlinebox" }}>
             <span
               style={
-                shouldRevealAnswer && state !== "nothing"
+                shouldRevealAnswer
                   ? state === "correct"
                     ? {
                         color: "green",
                         fontWeight: "bold"
                       }
-                    : { color: "red" }
+                    : state === 'incorrect' ? { color: "red" } :
+                    {
+                      color: "lightgrey"
+                    }
                   : {}
               }
             >
               {q}
             </span>
             <input
+             disabled={shouldRevealAnswer}
               type="checkbox"
               onClick={() => {
                 if (checkedAnswers.some(a => a === i)) {

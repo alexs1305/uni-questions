@@ -5,6 +5,7 @@ import SimpleMainComponent from "./SimpleMainComponent";
 import MainComponent from "./MainComponent";
 import { BrowserRouter } from "react-router-dom";
 import { Question } from "./questions/Question";
+import { JavaQuestions } from "./questions/JavaQuestions";
 
 const styles = {
   fontFamily: "sans-serif",
@@ -16,12 +17,7 @@ const App = () => {
   return (
     <div style={styles}>
       questions:
-      <Question
-        question="Which map is sorted by default"
-        answers={["TreeMap", "HashMap"]}
-        correctAnswers={[1]}
-        shouldRevealAnswer={shouldReveal}
-      />
+      <JavaQuestions shouldReveal={shouldReveal} />
       <button
         onClick={() => {
           setShouldReveal(!shouldReveal);
