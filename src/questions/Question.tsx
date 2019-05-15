@@ -36,11 +36,11 @@ export const Question: React.SFC<Props> = ({
 
   return (
     <div>
-      {question}
+      <h3>{question}</h3>
       {answers.map((q, i) => {
         let state = check(i, checkedAnswers, correctAnswers);
         return (
-          <div key={i} style={{ display: "inlinebox" }}>
+          <li key={i} style={{ display: "inlinebox" }}>
             <span
               style={
                 shouldRevealAnswer && state !== "nothing"
@@ -65,7 +65,7 @@ export const Question: React.SFC<Props> = ({
                 } else setCheckedAnswers((checkedAnswers || []).concat([i]));
               }}
             />
-          </div>
+          </li>
         );
       })}
       <div />
