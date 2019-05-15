@@ -13,7 +13,7 @@ const data: QuestionType[] = [
   },
   {
     question:
-      "What are the similarities between abstract classes and interfaces",
+      "What are the similarities between abstract classes and interfaces (2)",
     answers: [
       "They both allow private variables",
       "they both define abstract methods",
@@ -29,12 +29,13 @@ const data: QuestionType[] = [
       "abstract classes allow for instance methods",
       "interfaces allow for only final variables and these are public",
       "interfaces are 'implments' whereas abstract are 'extends'",
-      "abstract classes can have implemented methods, interfaces can only have abstracted methods"
+      "abstract classes can have implemented methods, interfaces can only have abstracted methods",
+      "all of the above"
     ],
-    correctAnswers: [0, 1, 2, 3]
+    correctAnswers: [4]
   },
   {
-    question: "Polymorphism is ",
+    question: "Polymorphism is (2)",
     answers: [
       "a method that multiple objects understand and act on in their own way",
       "a code that implements the same method",
@@ -42,6 +43,36 @@ const data: QuestionType[] = [
       "an interface"
     ],
     correctAnswers: [1, 0]
+  },
+  {
+    question: "Something is a component class when",
+    answers: [
+      "is is used as an instance variable in another class",
+      "is exposes static methods",
+      "it has instances of reference types",
+      "it is a super class"
+    ],
+    correctAnswers: [0]
+  },
+  {
+    question: "A composite class has",
+    answers: [
+      "a method",
+      "implements many interfaces",
+      "a reference type instance variable",
+      "extends from a super class"
+    ],
+    correctAnswers: [2]
+  },
+  {
+    question: "what are characteristics of encapsulation",
+    answers: [
+      "has both data and methods to act on data",
+      "hides data in private variables",
+      "exposes public methods to act on data, usually for access control",
+      "all of the above"
+    ],
+    correctAnswers: [3]
   }
 ];
 
