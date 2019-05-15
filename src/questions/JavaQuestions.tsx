@@ -41,7 +41,7 @@ const data: QuestionType[] = [
       "a class that inherits from another class",
       "an interface"
     ],
-    correctAnswers: [1, 2]
+    correctAnswers: [1, 0]
   }
 ];
 
