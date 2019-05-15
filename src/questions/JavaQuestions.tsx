@@ -1,5 +1,5 @@
 import { QuestionType, Question } from "./Question";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 interface Props {
   shouldReveal: boolean;
@@ -32,13 +32,40 @@ const data: QuestionType[] = [
       "abstract classes can have implemented methods, interfaces can only have abstracted methods"
     ],
     correctAnswers: [0, 1, 2, 3]
+  },
+  {
+    question: "Polymorphism is ",
+    answers: [
+      "a method that multiple objects understand and act on in their own way",
+      "a code that implements the same method",
+      "a class that inherits from another class",
+      "an interface"
+    ],
+    correctAnswers: [1, 2]
   }
 ];
 
+const next = () => Math.floor(Math.random() * data.length);
+const init: QuestionType[] = [];
+
 export const JavaQuestions: React.SFC<Props> = ({ shouldReveal }) => {
+  const [questions, setQuestions] = useState(init);
+
+  useEffect(() => {
+    if (questions.length > 0) return;
+    let newQs: QuestionType[] = [];
+    let iterations = 0;
+    while (newQs.length < 10 && iterations < 100) {
+      iterations++;
+      let rnd = next();
+      if (newQs.every(q => q !== data[rnd])) newQs.push(data[rnd]);
+    }
+    setQuestions(newQs);
+  });
+
   return (
     <React.Fragment>
-      {data.map(q => (
+      {questions.map(q => (
         <Question question={q} shouldRevealAnswer={shouldReveal} />
       ))}
     </React.Fragment>
